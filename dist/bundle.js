@@ -7,7 +7,6 @@
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/index.js":
@@ -16,7 +15,19 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _newTask__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./newTask */ \"./src/newTask.js\");\n\n\nconst newTask1 = (0,_newTask__WEBPACK_IMPORTED_MODULE_0__.newTask)(\"get my lunch\", \"eat lunch\", \"10 / 5 / 2022\", \"high\");\nnewTask1.toggleCompleteStaus();\n\nconsole.log(newTask1, newTask1.getCompleteStatus());\n\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _newTask__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./newTask */ \"./src/newTask.js\");\n/* harmony import */ var _newTask__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_newTask__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _newProject__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./newProject */ \"./src/newProject.js\");\n\n\n\nconst newTask1 = (0,_newTask__WEBPACK_IMPORTED_MODULE_0__.newTask)(\"get my lunch\", \"eat lunch\", \"10 / 5 / 2022\", \"high\");\nnewTask1.toggleStaus();\n\nconsole.log(newTask1, newTask1.status);\n\nconst newProject1 = (0,_newProject__WEBPACK_IMPORTED_MODULE_1__.newProject)(\"house\");\nnewProject1.addTask(newTask1);\n\nconsole.log(newProject1.getNewList());\n\nnewProject1.deleteTask(newTask1);\n\nconsole.log(newProject1.getNewList());\n\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/newProject.js":
+/*!***************************!*\
+  !*** ./src/newProject.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   newProject: () => (/* binding */ newProject)\n/* harmony export */ });\nconst newProject = (title) => {\n  let newList = [];\n  const addTask = (task) => {\n    newList.push(task);\n  };\n  const deleteTask = (task) => {\n    newList = newList.filter((e) => e !== task);\n  };\n\n  const getNewList = () => newList;\n\n  return { title, addTask, deleteTask, getNewList };\n};\n\n\n//# sourceURL=webpack://todo-list/./src/newProject.js?");
 
 /***/ }),
 
@@ -24,9 +35,9 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _new
 /*!************************!*\
   !*** ./src/newTask.js ***!
   \************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   newTask: () => (/* binding */ newTask)\n/* harmony export */ });\nconst newTask = (title, description, dueDate, priority) => {\n  let completeStatus = false;\n  const getCompleteStatus = () => completeStatus;\n  const toggleCompleteStaus = () => (completeStatus = !completeStatus);\n  return {\n    title,\n    description,\n    dueDate,\n    priority,\n    getCompleteStatus,\n    toggleCompleteStaus,\n  };\n};\n\n\n//# sourceURL=webpack://todo-list/./src/newTask.js?");
+eval("class PriorityLevels {\n  static LOW = 0;\n  static MEDIUM = 1;\n  static HIGH = 2;\n}\n\nObject.freeze(PriorityLevels);\n\nclass Priority {\n  constructor(priority) {\n    this.priority = priority;\n  }\n\n  get priority() {\n    return this._priority;\n  }\n\n  set priority(level) {\n    this._priority = level;\n  }\n}\n\nclass NewTask {\n  constructor(title, description, dueDate) {\n    this.title = title;\n    this.description = description;\n    this.dueDate = dueDate;\n    this.status = false;\n  }\n\n  get status() {\n    return this.status;\n  }\n\n  toggleStatus() {\n    this.status = !this.status;\n  }\n}\n\n\n//# sourceURL=webpack://todo-list/./src/newTask.js?");
 
 /***/ })
 
@@ -57,6 +68,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
