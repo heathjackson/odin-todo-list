@@ -1,5 +1,6 @@
-import { PriorityLevels, Priority, NewTask } from "./newTask";
-import { newProject } from "./newProject";
+import { Priority, PriorityLevels } from "./priority";
+import { NewTask } from "./newTask";
+import { NewProject } from "./newProject";
 
 const newTask1 = new NewTask(
   "get my lunch",
@@ -14,7 +15,7 @@ newTask1.toggleStatus();
 
 console.log(newTask1, newTask1.status);
 
-const newProject1 = newProject("house");
+const newProject1 = NewProject("house");
 newProject1.addTask(newTask1);
 
 console.log(newProject1.getNewList());
